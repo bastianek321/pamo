@@ -1,6 +1,7 @@
 <resources>
-   <string name="app_name">BMI Calculator</string>
-   <string name="enter_mass">Enter mass in kilograms</string>
-   <string name="enter_height">Enter height in meters</string>
-   <string name="total">BMI</string>
+    <string name="app_name">BMI Calculator</string>
+    <string name="enter_mass">Enter mass in kilograms</string>
+    <string name="enter_height">Enter height in meters</string>
+    <string name="total">BMI</string>
+    <string name="calculate_button">Oblicz swoje BMI!</string>
 </resources>
