@@ -3,5 +3,16 @@
     <string name="enter_mass">Enter mass in kilograms</string>
     <string name="enter_height">Enter height in meters</string>
     <string name="total">BMI</string>
-    <string name="calculate_button">Oblicz swoje BMI!</string>
+    <string name="calculate_button">Calculate your BMI!</string>
+    <string name="recipes_button">Show example recipes</string>
+    <string name="recipe_first">Dorsza pokroić na porcje (jeśli był mrożony - rozmrozić dokładnie i osuszyć). Doprawić solą oraz pieprzem, delikatnie obtoczyć w skrobi lub mące.
+Rozgrzać patelnię z masłem lub olejem. Dorsza obsmażyć z każdej strony po około minucie.
+Dodać pastę curry na patelnię a po chwili wlać mleko kokosowe i dodać paprykę w proszku, wymieszać i zagotować. Rybę delikatnie przewrócić na drugą stronę.
+Gotować przez ok. 2 minuty aż sos zgęstnieje, w międzyczasie polewając rybę z wierzchu sosem. Skropić limonką lub cytryną, można też doprawić sosem rybnym. Na koniec dodać szpinak i zanurzyć go w sosie.
+Odstawić z ognia, posypać wybranymi składnikami do dekoracji i podawać np. na ryżu z ugotowanymi brokułami.</string>
+    <string name="recipe_second">Filet łososia przekroić na 2 porcje i odciąć skórkę: położyć filety na desce skórką do dołu i przeciągając ostrym nożem między skórką a mięsem odciąć skórę pozostawiając ją na desce.
+Łososia włożyć do głębokiego talerza, dodać sos sojowy, sos rybny (lub dodać małą szczyptę soli) oraz pieprz. Skropić sokiem z limonki lub cytryny oraz polać słodkim sosem chili.
+Wymieszać i zostawić do zamarynowania na ok. 1 godzinę (jeśli mamy czas).
+Piekarnik nagrzać do 250 stopni C. Łososia ułożyć w żaroodpornym naczyniu, polać resztą marynaty i piec przez ok. 15 minut.
+Podawać z ryżem i pokrojonym na kawałki ananasem.</string>
 </resources>

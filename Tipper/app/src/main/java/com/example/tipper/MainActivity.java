@@ -2,9 +2,12 @@ package com.example.tipper;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable; // for EditText event handling
 import android.text.TextWatcher; // EditText listener
+import android.view.View;
+import android.widget.Button;
 import android.widget.EditText; // for bill amount input
 import android.widget.TextView; // for displaying text
 
@@ -43,6 +46,14 @@ public class MainActivity extends AppCompatActivity {
         EditText heightEditText =
                 (EditText) findViewById(R.id.heightEditText);
         heightEditText.addTextChangedListener(heightEditTextWatcher);
+
+        Button recipesButton = (Button) findViewById(R.id.recipesButton);
+        recipesButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainActivity.this, RecipesActivity.class));
+            }
+        });
     }
 
     // calculate and display tip and total amounts
