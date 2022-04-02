@@ -28,9 +28,11 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main); // inflate the GUI
 
         // get references to programmatically manipulated TextViews
-        massTextView = (TextView) findViewById(R.id.massTextView);
-        heightTextView = (TextView) findViewById(R.id.heightTextView);
-        bmiTextView = (TextView) findViewById(R.id.bmiTextView);
+        massTextView = findViewById(R.id.massTextView);
+        heightTextView = findViewById(R.id.heightTextView);
+        bmiTextView = findViewById(R.id.bmiTextView);
+        massTextView.setText(numberFormat.format(0));
+        heightTextView.setText(numberFormat.format(0));
         bmiTextView.setText(numberFormat.format(0));
 
         // set amountEditText's TextWatcher
