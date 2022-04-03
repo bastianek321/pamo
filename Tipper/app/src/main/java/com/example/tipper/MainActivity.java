@@ -20,9 +20,12 @@ public class MainActivity extends AppCompatActivity {
 
     private double mass = 0.0;
     private double height = 0.0;
+    private int age = 0;
     private TextView massTextView;
     private TextView heightTextView;
     private TextView bmiTextView;
+    private TextView ageTextView;
+    private TextView calorieTextView;
 
     // called when the activity is first created
     @Override
@@ -34,9 +37,13 @@ public class MainActivity extends AppCompatActivity {
         massTextView = findViewById(R.id.massTextView);
         heightTextView = findViewById(R.id.heightTextView);
         bmiTextView = findViewById(R.id.bmiTextView);
+        ageTextView = findViewById(R.id.ageTextView);
+        calorieTextView = findViewById(R.id.recommendedCalorie);
+        ageTextView.setText(numberFormat.format(0));
         massTextView.setText(numberFormat.format(0));
         heightTextView.setText(numberFormat.format(0));
         bmiTextView.setText(numberFormat.format(0));
+        calorieTextView.setText(numberFormat.format(0));
 
         // set amountEditText's TextWatcher
         EditText amountEditText =
@@ -46,6 +53,9 @@ public class MainActivity extends AppCompatActivity {
         EditText heightEditText =
                 (EditText) findViewById(R.id.heightEditText);
         heightEditText.addTextChangedListener(heightEditTextWatcher);
+
+        EditText ageEditText = (EditText) findViewById(R.id.ageEditText);
+        ageEditText.addTextChangedListener(ageEditTextWatcher);
 
         Button recipesButton = (Button) findViewById(R.id.recipesButton);
         recipesButton.setOnClickListener(new View.OnClickListener() {
@@ -60,11 +70,48 @@ public class MainActivity extends AppCompatActivity {
     private void calculate() {
 
         // calculate the tip and total
-        double bmi = mass/Math.pow(height, 2);
+        double bmi = mass / Math.pow(height, 2);
 
         // display tip and total formatted as currency
         bmiTextView.setText(Double.toString(bmi));
     }
+
+    private void calculateCalories() {
+        //For men: BMR = 66.5 + (13.75 * weight in kg) + (5.003 * height in cm) - (6.75 * age)
+        //
+        //For women: BMR = 655.1 + (9.563 * weight in kg) + (1.850 * height in cm) - (4.676 * age)
+
+        double calorieIntakeMen = 66.5 + (13.75 * mass) + (5.003 * (height * 100)) - (6.75 * age);
+        double calorieIntakeWomen = 655.1 + (9.563 * mass) + (1.850 * (height * 100)) - (4.676 * age);
+        double averageCalories = ((calorieIntakeMen + calorieIntakeWomen) / 2);
+
+        calorieTextView.setText(String.format("%.2f", averageCalories));
+    }
+
+    private final TextWatcher ageEditTextWatcher = new TextWatcher() {
+        @Override
+        public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+            try {
+                age = Integer.parseInt(charSequence.toString());
+                ageTextView.setText(Integer.toString(age));
+            } catch (NumberFormatException e) {
+                ageTextView.setText("");
+                age = 0;
+            }
+
+            calculateCalories();
+        }
+
+        @Override
+        public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+        }
+
+        @Override
+        public void afterTextChanged(Editable editable) {
+
+        }
+    };
 
     // listener object for the SeekBar's progress changed events
     private final TextWatcher heightEditTextWatcher = new TextWatcher() {
@@ -76,8 +123,7 @@ public class MainActivity extends AppCompatActivity {
             try { // get bill amount and display currency formatted value
                 height = Double.parseDouble(s.toString());
                 heightTextView.setText(Double.toString(height));
-            }
-            catch (NumberFormatException e) { // if s is empty or non-numeric
+            } catch (NumberFormatException e) { // if s is empty or non-numeric
                 heightTextView.setText("");
                 height = 0.0;
             }
@@ -86,11 +132,13 @@ public class MainActivity extends AppCompatActivity {
         }
 
         @Override
-        public void afterTextChanged(Editable s) { }
+        public void afterTextChanged(Editable s) {
+        }
 
         @Override
         public void beforeTextChanged(
-                CharSequence s, int start, int count, int after) { }
+                CharSequence s, int start, int count, int after) {
+        }
     };
 
     // listener object for the EditText's text-changed events
@@ -103,8 +151,7 @@ public class MainActivity extends AppCompatActivity {
             try { // get bill amount and display currency formatted value
                 mass = Double.parseDouble(s.toString());
                 massTextView.setText(Double.toString(mass));
-            }
-            catch (NumberFormatException e) { // if s is empty or non-numeric
+            } catch (NumberFormatException e) { // if s is empty or non-numeric
                 massTextView.setText("");
                 mass = 0.0;
             }
@@ -113,11 +160,13 @@ public class MainActivity extends AppCompatActivity {
         }
 
         @Override
-        public void afterTextChanged(Editable s) { }
+        public void afterTextChanged(Editable s) {
+        }
 
         @Override
         public void beforeTextChanged(
-                CharSequence s, int start, int count, int after) { }
+                CharSequence s, int start, int count, int after) {
+        }
     };
 }
 
