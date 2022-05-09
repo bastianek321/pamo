@@ -3,7 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
@@ -91,7 +91,7 @@
         android:id="@+id/bmiLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_row="3"
+        android:layout_row="4"
         android:layout_column="0"
         android:text="Your BMI:" />
 
@@ -99,7 +99,7 @@
         android:id="@+id/bmiTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_row="3"
+        android:layout_row="4"
         android:layout_column="1"
         android:text="0"
         android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
@@ -107,7 +107,7 @@
         android:id="@+id/recommendedCalorieLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_row="4"
+        android:layout_row="5"
         android:layout_column="0"
         android:text="@string/calorie_intake"
         android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
@@ -115,18 +115,35 @@
         android:id="@+id/recommendedCalorie"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_row="4"
+        android:layout_row="5"
         android:layout_column="1"
         android:text="0"
         android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
+
     <Button
         android:id="@+id/recipesButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_row="5"
+        android:layout_row="6"
         android:layout_column="0"
         android:layout_columnSpan="2"
         android:text="@string/recipes_button"
         />
+    <Button
+        android:id="@+id/calculateBmiButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_row="3"
+        android:layout_column="0"
+        android:layout_columnSpan="2"
+        android:text="@string/calculate_bmi_button"
+        />
 
+    <com.jjoe64.graphview.GraphView
+        android:id="@+id/graphView"
+        android:layout_width="wrap_content"
+        android:layout_height="358dp"
+        android:layout_row="7"
+        android:layout_column="0"
+        android:layout_columnSpan="2" />
 </GridLayout>

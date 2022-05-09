@@ -1,8 +1,10 @@
 package com.example.tipper;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.text.Editable; // for EditText event handling
 import android.text.TextWatcher; // EditText listener
@@ -11,7 +13,14 @@ import android.widget.Button;
 import android.widget.EditText; // for bill amount input
 import android.widget.TextView; // for displaying text
 
+import com.jjoe64.graphview.GraphView;
+import com.jjoe64.graphview.series.DataPoint;
+import com.jjoe64.graphview.series.LineGraphSeries;
+
 import java.text.NumberFormat;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -21,11 +30,15 @@ public class MainActivity extends AppCompatActivity {
     private double mass = 0.0;
     private double height = 0.0;
     private int age = 0;
+    private double bmi = 0;
     private TextView massTextView;
     private TextView heightTextView;
     private TextView bmiTextView;
     private TextView ageTextView;
     private TextView calorieTextView;
+    private int checkupNumber = 0;
+    private LineGraphSeries<DataPoint> graphData;
+    private GraphView graphView;
 
     // called when the activity is first created
     @Override
@@ -33,6 +46,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState); // call superclass onCreate
         setContentView(R.layout.activity_main); // inflate the GUI
 
+        graphData = new LineGraphSeries<DataPoint>(new DataPoint[]{});
         // get references to programmatically manipulated TextViews
         massTextView = findViewById(R.id.massTextView);
         heightTextView = findViewById(R.id.heightTextView);
@@ -44,6 +58,7 @@ public class MainActivity extends AppCompatActivity {
         heightTextView.setText(numberFormat.format(0));
         bmiTextView.setText(numberFormat.format(0));
         calorieTextView.setText(numberFormat.format(0));
+        graphView = findViewById(R.id.graphView);
 
         // set amountEditText's TextWatcher
         EditText amountEditText =
@@ -64,13 +79,24 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(new Intent(MainActivity.this, RecipesActivity.class));
             }
         });
+
+        Button calculateButton = (Button) findViewById(R.id.calculateBmiButton);
+        calculateButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                calculate();
+                calculateCalories();
+                drawGraph();
+            }
+        });
     }
 
     // calculate and display tip and total amounts
     private void calculate() {
 
         // calculate the tip and total
-        double bmi = mass / Math.pow(height, 2);
+        bmi = mass / Math.pow(height, 2);
+        // done this way because List.of doesn't work
 
         // display tip and total formatted as currency
         bmiTextView.setText(Double.toString(bmi));
@@ -88,6 +114,30 @@ public class MainActivity extends AppCompatActivity {
         calorieTextView.setText(String.format("%.2f", averageCalories));
     }
 
+    private void drawGraph(){
+        // after adding data to our line graph series.
+        // on below line we are setting
+        // title for our graph view.
+        checkupNumber += 1;
+        if(graphData.getHighestValueX() < age){
+            graphData.appendData(new DataPoint(age, bmi), true, checkupNumber);
+        }
+        graphView.setTitle("BMI change in time");
+
+        // on below line we are setting
+        // text color to our graph view.
+        graphView.setTitleColor(R.color.colorPrimary);
+
+        // on below line we are setting
+        // our title text size.
+        graphView.setTitleTextSize(68);
+
+        // on below line we are adding
+        // data series to our graph view.
+        graphView.addSeries(graphData);
+    }
+
+
     private final TextWatcher ageEditTextWatcher = new TextWatcher() {
         @Override
         public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
@@ -98,8 +148,6 @@ public class MainActivity extends AppCompatActivity {
                 ageTextView.setText("");
                 age = 0;
             }
-
-            calculateCalories();
         }
 
         @Override
@@ -128,7 +176,6 @@ public class MainActivity extends AppCompatActivity {
                 height = 0.0;
             }
 
-            calculate(); // update the tip and total TextViews
         }
 
         @Override
@@ -156,7 +203,6 @@ public class MainActivity extends AppCompatActivity {
                 mass = 0.0;
             }
 
-            calculate(); // update the tip and total TextViews
         }
 
         @Override
