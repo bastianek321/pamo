@@ -5,6 +5,7 @@
     <string name="enter_age">Enter age in years</string>
     <string name="total">BMI</string>
     <string name="calculate_button">Calculate your BMI!</string>
+    <string name="quiz_button">Start quiz!</string>
     <string name="calculate_bmi_button">Calculate!</string>
     <string name="recipes_button">Show example recipes</string>
     <string name="recipe_first">Dorsza pokroić na porcje (jeśli był mrożony - rozmrozić dokładnie i osuszyć). Doprawić solą oraz pieprzem, delikatnie obtoczyć w skrobi lub mące.

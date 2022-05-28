@@ -14,12 +14,19 @@ public class HomeScreen extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_screen);
 
-        Button calculateBMIButton = (Button) findViewById(R.id.calculate_button);
+        Button calculateBMIButton = findViewById(R.id.calculate_button);
+        Button quizButton = findViewById(R.id.quiz_button);
 
         calculateBMIButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(HomeScreen.this, MainActivity.class));
+            }
+        });
+        quizButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(HomeScreen.this, QuizActivity.class));
             }
         });
 
