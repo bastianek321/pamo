@@ -113,8 +113,36 @@ public class QuizActivity extends AppCompatActivity {
         secondQuestion.addAnswer("15-19");
         secondQuestion.addAnswer("25-30");
         secondQuestion.addAnswer("30-35");
+        Question thirdQuestion = new Question("2.5l",
+                "How much water should you at least drink on a daily basis?");
+        thirdQuestion.addAnswer("0.5l");
+        thirdQuestion.addAnswer("2.5l");
+        thirdQuestion.addAnswer("3l");
+        thirdQuestion.addAnswer("1.5l");
+        Question fourthQuestion = new Question("Cereal",
+                "Which one of these breakfast will set you up for the day?");
+        fourthQuestion.addAnswer("Ham sandwich");
+        fourthQuestion.addAnswer("Protein bar");
+        fourthQuestion.addAnswer("Cereal");
+        fourthQuestion.addAnswer("Crisps");
+        Question fifthQuestion = new Question("7-8",
+                "What is the optimal amount of hours that you should sleep?");
+        fifthQuestion.addAnswer("5-6");
+        fifthQuestion.addAnswer("7-8");
+        fifthQuestion.addAnswer("9-10");
+        fifthQuestion.addAnswer("More than 10");
+        Question sixthQuestion = new Question("Motivation",
+                "What is the key to weight loss??");
+        sixthQuestion.addAnswer("Exercising");
+        sixthQuestion.addAnswer("Frequent meals");
+        sixthQuestion.addAnswer("Motivation");
+        sixthQuestion.addAnswer("Drinking water");
         questionList.add(firstQuestion);
         questionList.add(secondQuestion);
+        questionList.add(thirdQuestion);
+        questionList.add(fourthQuestion);
+        questionList.add(fifthQuestion);
+        questionList.add(sixthQuestion);
     }
 
 
